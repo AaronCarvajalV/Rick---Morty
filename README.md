@@ -45,6 +45,5 @@ useEffect(() => {
 ```
 
 ## Conclusiones personales sobre el desarrollo del taller
-> *Nota para el estudiante: Reemplaza este texto con tus propias palabras o reflexiones sobre lo que aprendiste al realizar el taller (ej: el manejo de asincronía en React, la importancia de componentes reutilizables, etc.).*
 
 Durante el desarrollo de esta aplicación, pude comprender a fondo cómo los hooks `useState` y `useEffect` interactúan para gestionar datos provenientes de fuentes externas. Además, la separación de responsabilidades a través de componentes reutilizables y *custom hooks* permitió mantener el código ordenado y fácil de escalar. La implementación de un diseño moderno y responsivo con CSS también reforzó las mejores prácticas de UI/UX.
