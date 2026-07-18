@@ -46,11 +46,7 @@ export const Header: React.FC<HeaderProps> = ({ nameFilter, setNameFilter }) => 
         }}>
           MULTIVERSE
         </h1>
-        <nav style={{ display: 'flex', gap: '1.2rem', fontSize: '0.9rem', fontWeight: 600 }}>
-          <span style={{ cursor: 'pointer', transition: 'color 0.2s' }}>Inicio</span>
-          <span style={{ cursor: 'pointer', color: 'var(--text-muted)', transition: 'color 0.2s' }}>Personajes</span>
-          <span style={{ cursor: 'pointer', color: 'var(--text-muted)', transition: 'color 0.2s' }}>Mi Lista</span>
-        </nav>
+
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>

@@ -67,7 +67,6 @@ export const Hero: React.FC<HeroProps> = ({ character, onMoreInfo }) => {
         </h1>
         
         <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.2rem', fontWeight: 600, textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
-          <span style={{ color: 'var(--success)' }}>98% de coincidencia</span>
           <span>{character.species}</span>
           <span style={{ border: '1px solid rgba(255,255,255,0.4)', padding: '0 0.4rem' }}>{character.status}</span>
         </div>
@@ -78,7 +77,8 @@ export const Hero: React.FC<HeroProps> = ({ character, onMoreInfo }) => {
           textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
           maxWidth: '600px'
         }}>
-          Un destacado habitante de {character.origin.name}. Su última ubicación conocida fue {character.location.name}. Descubre su historia a través del multiverso.
+          Origen: {character.origin.name}<br />
+          Última ubicación: {character.location.name}
         </p>
 
         <div style={{ display: 'flex', gap: '1rem' }}>
