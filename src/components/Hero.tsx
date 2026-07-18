@@ -82,9 +82,6 @@ export const Hero: React.FC<HeroProps> = ({ character, onMoreInfo }) => {
         </p>
 
         <div style={{ display: 'flex', gap: '1rem' }}>
-          <button className="btn-primary">
-            <span style={{ fontSize: '1.4rem' }}>▶</span> Reproducir
-          </button>
           <button className="btn-secondary" onClick={() => onMoreInfo(character)}>
             <span style={{ fontSize: '1.4rem', borderRadius: '50%', border: '2px solid white', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>i</span> 
             Más información
