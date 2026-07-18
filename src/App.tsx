@@ -11,12 +11,13 @@ import { Character } from './types';
 
 const App: React.FC = () => {
   const [nameFilter, setNameFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
 
-  // We fetch characters based on nameFilter.
-  const { characters, loading, error } = useCharacters({ nameFilter, statusFilter: '' });
+  // We fetch characters based on nameFilter and statusFilter.
+  const { characters, loading, error } = useCharacters({ nameFilter, statusFilter });
 
-  // For the Netflix view, we categorize the characters
+  // For the Netflix view, if no filters are active, we categorize them
   const aliveCharacters = characters.filter(c => c.status === 'Alive');
   const deadCharacters = characters.filter(c => c.status === 'Dead');
   const unknownCharacters = characters.filter(c => c.status === 'unknown');
@@ -24,12 +25,20 @@ const App: React.FC = () => {
   // Featured hero character
   const heroCharacter = characters.length > 0 ? characters[0] : null;
 
+  // Determine if we should show the default Netflix home (carousels) or a grid of results
+  const isSearching = nameFilter !== '' || statusFilter !== '';
+
   return (
     <div className="container-fluid">
-      <Header nameFilter={nameFilter} setNameFilter={setNameFilter} />
+      <Header 
+        nameFilter={nameFilter} 
+        setNameFilter={setNameFilter}
+        statusFilter={statusFilter}
+        setStatusFilter={setStatusFilter}
+      />
 
       {/* Show Hero and Carousels if no search is active */}
-      {!nameFilter && !loading && !error && (
+      {!isSearching && !loading && !error && (
         <>
           <Hero character={heroCharacter} onMoreInfo={setSelectedCharacter} />
           
@@ -55,10 +64,10 @@ const App: React.FC = () => {
         </>
       )}
 
-      {/* Show search results if searching */}
-      {nameFilter && (
+      {/* Show search/filter results if searching */}
+      {isSearching && (
         <div style={{ padding: '100px 4% 0' }}>
-          <h2 style={{ marginBottom: '2rem', fontSize: '1.5rem' }}>Resultados para "{nameFilter}"</h2>
+          <h2 style={{ marginBottom: '2rem', fontSize: '1.5rem' }}>Resultados de la búsqueda</h2>
           {loading && <Loader />}
           {!loading && error && <ErrorMessage message={error} />}
           {!loading && !error && characters.length > 0 && (
@@ -71,8 +80,8 @@ const App: React.FC = () => {
       )}
 
       {/* Handle empty or initial loading state when not searching */}
-      {!nameFilter && loading && <div style={{ paddingTop: '100px' }}><Loader /></div>}
-      {!nameFilter && !loading && error && <div style={{ paddingTop: '100px' }}><ErrorMessage message={error} /></div>}
+      {!isSearching && loading && <div style={{ paddingTop: '100px' }}><Loader /></div>}
+      {!isSearching && !loading && error && <div style={{ paddingTop: '100px' }}><ErrorMessage message={error} /></div>}
 
       {/* Modal */}
       {selectedCharacter && (

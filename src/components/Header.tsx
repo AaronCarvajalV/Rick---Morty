@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 interface HeaderProps {
   nameFilter: string;
   setNameFilter: (name: string) => void;
+  statusFilter: string;
+  setStatusFilter: (status: string) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ nameFilter, setNameFilter }) => {
+export const Header: React.FC<HeaderProps> = ({ nameFilter, setNameFilter, statusFilter, setStatusFilter }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -46,7 +48,26 @@ export const Header: React.FC<HeaderProps> = ({ nameFilter, setNameFilter }) => 
         }}>
           MULTIVERSE
         </h1>
-
+        
+        {/* Status Filter (Netflix category style) */}
+        <select 
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+          style={{
+            background: 'transparent',
+            color: 'var(--text-light)',
+            border: 'none',
+            fontSize: '0.9rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            outline: 'none',
+          }}
+        >
+          <option value="" style={{ background: 'var(--bg-dark)' }}>Todos los estados</option>
+          <option value="Alive" style={{ background: 'var(--bg-dark)' }}>Vivos (Alive)</option>
+          <option value="Dead" style={{ background: 'var(--bg-dark)' }}>Caídos (Dead)</option>
+          <option value="unknown" style={{ background: 'var(--bg-dark)' }}>Desconocidos (Unknown)</option>
+        </select>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
@@ -66,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({ nameFilter, setNameFilter }) => 
           </span>
           <input
             type="text"
-            placeholder="Títulos, personas, géneros"
+            placeholder="Buscar personaje..."
             value={nameFilter}
             onChange={(e) => setNameFilter(e.target.value)}
             style={{
