@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
 
 :root {
-  --primary: #97ce4c; /* Rick and Morty green */
-  --primary-dark: #7bb53c;
-  --secondary: #00b5cc; /* Rick's portal blue */
-  --bg-dark: #0f172a;
-  --bg-card: rgba(30, 41, 59, 0.7);
-  --text-light: #f8fafc;
-  --text-muted: #94a3b8;
-  --danger: #ef4444;
+  --primary: #e50914; /* Netflix Red */
+  --primary-dark: #b81d24;
+  --secondary: #97ce4c; /* Rick and Morty Green for accents */
+  --bg-dark: #141414; /* Netflix Background */
+  --bg-card: #2f2f2f;
+  --text-light: #e5e5e5;
+  --text-muted: #808080;
+  --danger: #e50914;
   --unknown: #64748b;
+  --success: #46d369;
 }
 
 * {
@@ -21,43 +22,23 @@
 body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-dark);
-  background-image: 
-    radial-gradient(circle at 15% 50%, rgba(151, 206, 76, 0.08), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(0, 181, 204, 0.08), transparent 25%);
   color: var(--text-light);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-/* Glassmorphism Card */
-.glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* Scrollbar */
+/* Hide scrollbar for a cleaner streaming look */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
-::-webkit-scrollbar-thumb {
-  background: var(--secondary);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+
+.container-fluid {
+  width: 100%;
+  padding-bottom: 4rem;
 }
 
 /* Utilities */
@@ -67,6 +48,45 @@ body {
 .gap-4 { gap: 1rem; }
 
 /* Status Colors */
-.status-alive { color: var(--primary); }
+.status-alive { color: var(--success); }
 .status-dead { color: var(--danger); }
 .status-unknown { color: var(--unknown); }
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--text-light);
+  color: black;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s;
+}
+.btn-primary:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.btn-secondary {
+  background-color: rgba(109, 109, 110, 0.7);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s;
+}
+.btn-secondary:hover {
+  background-color: rgba(109, 109, 110, 0.4);
+}
